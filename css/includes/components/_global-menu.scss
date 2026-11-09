@@ -200,7 +200,7 @@
             width: calc(100% + var(--tblr-gutter-x, 1.5rem) * 2);
 
             .glpi-logo {
-                background: var(--glpi-logo-reduced) no-repeat;
+                background: var(--glpi-logo-reduced) no-repeat center;
                 background-size: contain;
                 width: 40px;
                 height: 40px;
