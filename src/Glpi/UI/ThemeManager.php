@@ -89,6 +89,7 @@ class ThemeManager
                 new Theme('premiumred', 'Premium Red', false, false),
                 new Theme('purplehaze', 'Purple Haze', false, false),
                 new Theme('teclib', 'Teclib', false, false),
+                new Theme('terrabrasilis', 'Terra Brasilis', false, false),
                 new Theme('vintage', 'Vintage', false, false),
             ];
         }
@@ -199,7 +200,10 @@ class ThemeManager
      */
     public function getCurrentTheme(): Theme
     {
-        $current = $_SESSION['glpipalette'] ?? self::DEFAULT_THEME;
+        global $CFG_GLPI;
+
+        // Fall back to the global palette so anonymous pages (login) also use it.
+        $current = $_SESSION['glpipalette'] ?? $CFG_GLPI['palette'] ?? self::DEFAULT_THEME;
         $theme = $this->getTheme($current);
         if ($theme === null) {
             // Force trying to get the default theme
